@@ -5,7 +5,7 @@ function createAccordion(root) {
         return;
     }
 
-    function setExpanded(item, expanded) {
+    function openItem(item) {
         const button = item.querySelector(".faq-question");
         const panel = item.querySelector(".faq-answer");
 
@@ -13,38 +13,87 @@ function createAccordion(root) {
             return;
         }
 
-        item.classList.toggle("active", expanded);
-        button.setAttribute("aria-expanded", String(expanded));
-        panel.hidden = !expanded;
+        item.classList.add("active");
+        button.setAttribute("aria-expanded", "true");
+        panel.hidden = false;
+        panel.style.height = `${panel.scrollHeight}px`;
+
+        const handleTransitionEnd = (event) => {
+            if (event.propertyName !== "height") {
+                return;
+            }
+
+            if (item.classList.contains("active")) {
+                panel.style.height = "auto";
+            }
+
+            panel.removeEventListener("transitionend", handleTransitionEnd);
+        };
+
+        panel.addEventListener("transitionend", handleTransitionEnd);
+    }
+
+    function closeItem(item) {
+        const button = item.querySelector(".faq-question");
+        const panel = item.querySelector(".faq-answer");
+
+        if (!button || !panel) {
+            return;
+        }
+
+        panel.style.height = `${panel.scrollHeight}px`;
+        panel.offsetHeight;
+
+        item.classList.remove("active");
+        button.setAttribute("aria-expanded", "false");
+        panel.style.height = "0px";
+
+        const handleTransitionEnd = (event) => {
+            if (event.propertyName !== "height") {
+                return;
+            }
+
+            if (!item.classList.contains("active")) {
+                panel.hidden = true;
+            }
+
+            panel.removeEventListener("transitionend", handleTransitionEnd);
+        };
+
+        panel.addEventListener("transitionend", handleTransitionEnd);
     }
 
     function closeOthers(currentItem) {
         items.forEach((item) => {
             if (item !== currentItem) {
-                setExpanded(item, false);
+                closeItem(item);
             }
         });
     }
 
     items.forEach((item) => {
-        setExpanded(item, false);
-
         const button = item.querySelector(".faq-question");
+        const panel = item.querySelector(".faq-answer");
 
-        if (!button) {
+        if (!button || !panel) {
             return;
         }
 
+        item.classList.remove("active");
+        button.setAttribute("aria-expanded", "false");
+        panel.hidden = true;
+        panel.style.height = "0px";
+
         button.addEventListener("click", () => {
-            const isExpanded = button.getAttribute("aria-expanded") === "true";
+            const isExpanded = item.classList.contains("active");
 
             if (isExpanded) {
-                setExpanded(item, false);
+                closeItem(item);
                 return;
             }
 
             closeOthers(item);
-            setExpanded(item, true);
+            openItem(item);
         });
     });
 }

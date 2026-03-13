@@ -627,6 +627,7 @@ h3 {
 
 .faq-heading {
     margin: 0;
+    font-family: "Manrope", "Helvetica Neue", sans-serif;
 }
 
 .faq-question {
@@ -643,6 +644,16 @@ h3 {
     text-align: left;
     font-size: 1.05rem;
     font-weight: 600;
+    font-family: "Manrope", "Helvetica Neue", sans-serif;
+    line-height: 1.5;
+}
+
+.faq-question span,
+.faq-arrow,
+.faq-answer,
+.faq-answer-inner,
+.faq-answer-inner p {
+    font-family: "Manrope", "Helvetica Neue", sans-serif;
 }
 
 .faq-arrow {
@@ -653,33 +664,23 @@ h3 {
 }
 
 .faq-answer {
-    display: grid;
-    grid-template-rows: 0fr;
+    height: 0;
     overflow: hidden;
-    transition: grid-template-rows 0.35s ease;
-}
-
-.faq-answer[hidden] {
-    display: grid;
+    transition: height 0.35s ease;
 }
 
 .faq-answer-inner {
-    min-height: 0;
+    padding: 0 0 22px;
 }
 
 .faq-answer-inner p {
     margin: 0;
-    padding: 0 0 22px;
     color: var(--muted);
     line-height: 1.8;
 }
 
 .faq-item.active .faq-arrow {
     transform: rotate(45deg);
-}
-
-.faq-item.active .faq-answer {
-    grid-template-rows: 1fr;
 }
 
 .faq-question:focus-visible {
