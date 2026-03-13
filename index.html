@@ -261,38 +261,56 @@
                         <h2>Helpful details before your visit</h2>
                     </div>
 
-                    <div class="faq-accordion">
-                        <div class="faq-item">
-                            <button class="faq-question" type="button" aria-expanded="false">
-                                <span>Do I need to bring anything?</span>
-                                <span class="faq-arrow">+</span>
-                            </button>
-                            <div class="faq-answer">
-                                <p>No. All ingredients, tools, and materials are prepared for you in the atelier.</p>
+                    <div class="faq-accordion" data-accordion>
+                        <article class="faq-item">
+                            <h3 class="faq-heading">
+                                <button class="faq-question" type="button" id="faq-question-1" aria-expanded="false"
+                                    aria-controls="faq-answer-1">
+                                    <span>Do I need to bring anything?</span>
+                                    <span class="faq-arrow" aria-hidden="true">+</span>
+                                </button>
+                            </h3>
+                            <div class="faq-answer" id="faq-answer-1" role="region" aria-labelledby="faq-question-1"
+                                hidden>
+                                <div class="faq-answer-inner">
+                                    <p>No. All ingredients, tools, and materials are prepared for you in the atelier.</p>
+                                </div>
                             </div>
-                        </div>
+                        </article>
 
-                        <div class="faq-item">
-                            <button class="faq-question" type="button" aria-expanded="false">
-                                <span>How long does the workshop last?</span>
-                                <span class="faq-arrow">+</span>
-                            </button>
-                            <div class="faq-answer">
-                                <p>Most sessions last around one hour, with a little extra time for final adjustments
-                                    and packaging.</p>
+                        <article class="faq-item">
+                            <h3 class="faq-heading">
+                                <button class="faq-question" type="button" id="faq-question-2" aria-expanded="false"
+                                    aria-controls="faq-answer-2">
+                                    <span>How long does the workshop last?</span>
+                                    <span class="faq-arrow" aria-hidden="true">+</span>
+                                </button>
+                            </h3>
+                            <div class="faq-answer" id="faq-answer-2" role="region" aria-labelledby="faq-question-2"
+                                hidden>
+                                <div class="faq-answer-inner">
+                                    <p>Most sessions last around one hour, with a little extra time for final adjustments
+                                        and packaging.</p>
+                                </div>
                             </div>
-                        </div>
+                        </article>
 
-                        <div class="faq-item">
-                            <button class="faq-question" type="button" aria-expanded="false">
-                                <span>Can I cancel or reschedule?</span>
-                                <span class="faq-arrow">+</span>
-                            </button>
-                            <div class="faq-answer">
-                                <p>Yes. Changes are possible up to 24 hours before your reservation, subject to
-                                    availability.</p>
+                        <article class="faq-item">
+                            <h3 class="faq-heading">
+                                <button class="faq-question" type="button" id="faq-question-3" aria-expanded="false"
+                                    aria-controls="faq-answer-3">
+                                    <span>Can I cancel or reschedule?</span>
+                                    <span class="faq-arrow" aria-hidden="true">+</span>
+                                </button>
+                            </h3>
+                            <div class="faq-answer" id="faq-answer-3" role="region" aria-labelledby="faq-question-3"
+                                hidden>
+                                <div class="faq-answer-inner">
+                                    <p>Yes. Changes are possible up to 24 hours before your reservation, subject to
+                                        availability.</p>
+                                </div>
                             </div>
-                        </div>
+                        </article>
                     </div>
                 </div>
             </section>
