@@ -127,13 +127,52 @@ h3 {
     align-items: center;
     justify-content: flex-end;
     flex: 1;
-    gap: 42px;
+    gap: 26px;
 }
 
 .navlinks {
     display: flex;
     align-items: center;
     gap: 36px;
+}
+
+/* Future bilingual support */
+.language-switch {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px;
+    border: 1px solid rgba(65, 52, 46, 0.1);
+    border-radius: 999px;
+    background: rgba(255, 252, 249, 0.86);
+    box-shadow: 0 8px 20px rgba(49, 35, 30, 0.04);
+}
+
+.language-option {
+    min-width: 46px;
+    min-height: 34px;
+    padding: 0 12px;
+    border: 0;
+    border-radius: 999px;
+    background: transparent;
+    color: var(--muted);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.25s ease, color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.language-option.is-active {
+    background: linear-gradient(135deg, rgba(150, 117, 109, 0.14) 0%, rgba(99, 75, 69, 0.2) 100%);
+    color: var(--accent-deep);
+    box-shadow: inset 0 0 0 1px rgba(95, 72, 66, 0.1);
+}
+
+.language-option:hover,
+.language-option:focus-visible {
+    color: var(--text);
 }
 
 .navlinks a {
@@ -226,7 +265,7 @@ h3 {
     align-items: center;
     background:
         linear-gradient(180deg, rgba(24, 18, 16, 0.2), rgba(24, 18, 16, 0.58)),
-        url("images/hero.png") center center / cover no-repeat;
+        url("perfume-images/hero.webp") center center / cover no-repeat;
 }
 
 .hero::after {
@@ -479,15 +518,7 @@ h3 {
     border-radius: var(--radius-lg);
 }
 
-.experience-card picture,
-.pricing-card picture,
-.reservation-media picture,
-.access-map-area picture,
-.flow-media picture {
-    display: block;
-}
-
-/* Media rendering and image fallback structure */
+/* Media rendering */
 .experience-card img,
 .pricing-image {
     width: 100%;
@@ -903,6 +934,10 @@ h3 {
         gap: 22px;
     }
 
+    .language-switch {
+        margin-left: auto;
+    }
+
     .hero-content {
         padding: 120px 0 100px;
         max-width: 640px;
@@ -974,6 +1009,11 @@ h3 {
         flex-direction: column;
         align-items: flex-start;
         gap: 16px;
+    }
+
+    .language-switch {
+        align-self: flex-start;
+        margin-left: 0;
     }
 
     .nav-cta {

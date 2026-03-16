@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-default-locale="en" data-supported-locales="ja,en">
 
 <head>
     <meta charset="UTF-8">
@@ -8,7 +8,6 @@
     <title>Fragrance Workshop Asakusa</title>
     <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
-    <!-- Optional: add matching .webp exports in images/ and place them first inside each <picture>. -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -38,6 +37,14 @@
                         <a href="#access">Access</a>
                     </nav>
 
+                    <!-- Portfolio-ready language switch: English stays active, structure is ready for future JP copy. -->
+                    <div class="language-switch" aria-label="Language selector" data-i18n-control>
+                        <button class="language-option" type="button" lang="ja" aria-pressed="false"
+                            data-locale="ja">JP</button>
+                        <button class="language-option is-active" type="button" lang="en" aria-pressed="true"
+                            data-locale="en">EN</button>
+                    </div>
+
                     <a class="nav-cta" href="#reservation">Book a private session</a>
                 </div>
 
@@ -51,7 +58,7 @@
         </header>
 
         <main id="top">
-            <section class="hero">
+            <section class="hero" data-i18n-section="hero">
                 <div class="container hero-content">
                     <p class="hero-kicker">Private fragrance atelier in Asakusa</p>
                     <h1 class="hero-title"><span>Create Your Own</span><span>Perfume in Asakusa</span></h1>
@@ -72,7 +79,7 @@
                 </div>
             </section>
 
-            <section class="section intro-section" id="about">
+            <section class="section intro-section" id="about" data-i18n-section="about">
                 <div class="container">
                     <div class="section-heading">
                         <p class="section-kicker">About</p>
@@ -85,10 +92,8 @@
 
                     <div class="experience-grid">
                         <article class="experience-card">
-                            <picture>
-                                <img src="perfume-images/about-concept.webp" alt="Perfume ingredients and atelier tools"
-                                    width="1024" height="1024" loading="lazy" decoding="async">
-                            </picture>
+                            <img src="perfume-images/about-concept.webp" alt="Perfume ingredients and atelier tools"
+                                width="1024" height="1024" loading="lazy" decoding="async">
                             <div class="experience-content">
                                 <p class="card-label">Concept</p>
                                 <h3>Crafted around Japanese sensibility</h3>
@@ -100,10 +105,8 @@
                         </article>
 
                         <article class="experience-card">
-                            <picture>
-                                <img src="perfume-images/about-create.webp" alt="Guest creating a custom perfume blend"
-                                    width="3584" height="4800" loading="lazy" decoding="async">
-                            </picture>
+                            <img src="perfume-images/about-create.webp" alt="Guest creating a custom perfume blend"
+                                width="3584" height="4800" loading="lazy" decoding="async">
                             <div class="experience-content">
                                 <p class="card-label">Creation</p>
                                 <h3>Blend a scent that feels entirely yours</h3>
@@ -119,7 +122,7 @@
                 </div>
             </section>
 
-            <section class="section flow-section">
+            <section class="section flow-section" data-i18n-section="process">
                 <div class="container">
                     <div class="section-heading">
                         <p class="section-kicker">Process</p>
@@ -129,10 +132,8 @@
                     <div class="flow-grid">
                         <article class="flow-card">
                             <div class="flow-media">
-                                <picture>
-                                    <img src="perfume-images/flow-step-1.webp" alt="Choosing fragrance notes" width="5504"
-                                        height="3072" loading="lazy" decoding="async">
-                                </picture>
+                                <img src="perfume-images/flow-step-1.webp" alt="Choosing fragrance notes" width="5504"
+                                    height="3072" loading="lazy" decoding="async">
                             </div>
                             <div class="flow-content">
                                 <p class="flow-step">01</p>
@@ -144,10 +145,8 @@
 
                         <article class="flow-card">
                             <div class="flow-media">
-                                <picture>
-                                    <img src="perfume-images/flow-step-2.webp" alt="Blending perfume in the atelier"
-                                        width="1536" height="1024" loading="lazy" decoding="async">
-                                </picture>
+                                <img src="perfume-images/flow-step-2.webp" alt="Blending perfume in the atelier"
+                                    width="1536" height="1024" loading="lazy" decoding="async">
                             </div>
                             <div class="flow-content">
                                 <p class="flow-step">02</p>
@@ -158,10 +157,8 @@
 
                         <article class="flow-card">
                             <div class="flow-media">
-                                <picture>
-                                    <img src="perfume-images/flow-step-3.webp" alt="Finished perfume bottle to take home"
-                                        width="1536" height="1024" loading="lazy" decoding="async">
-                                </picture>
+                                <img src="perfume-images/flow-step-3.webp" alt="Finished perfume bottle to take home"
+                                    width="1536" height="1024" loading="lazy" decoding="async">
                             </div>
                             <div class="flow-content">
                                 <p class="flow-step">03</p>
@@ -173,7 +170,7 @@
                 </div>
             </section>
 
-            <section class="section pricing-section" id="pricing">
+            <section class="section pricing-section" id="pricing" data-i18n-section="pricing">
                 <div class="container">
                     <div class="section-heading">
                         <p class="section-kicker">Pricing</p>
@@ -182,11 +179,9 @@
 
                     <div class="pricing-grid">
                         <article class="pricing-card">
-                            <picture>
-                                <img class="pricing-image" src="perfume-images/pricing-standard.webp"
-                                    alt="Standard perfume workshop experience" width="1024" height="1536"
-                                    loading="lazy" decoding="async">
-                            </picture>
+                            <img class="pricing-image" src="perfume-images/pricing-standard.webp"
+                                alt="Standard perfume workshop experience" width="1024" height="1536"
+                                loading="lazy" decoding="async">
                             <div class="pricing-content">
                                 <p class="card-label">For one guest</p>
                                 <h3>Standard Session</h3>
@@ -201,11 +196,9 @@
 
                         <article class="pricing-card featured">
                             <div class="pricing-badge">Most popular</div>
-                            <picture>
-                                <img class="pricing-image" src="perfume-images/pricing-couple.webp"
-                                    alt="Couple perfume workshop experience" width="1536" height="1024"
-                                    loading="lazy" decoding="async">
-                            </picture>
+                            <img class="pricing-image" src="perfume-images/pricing-couple.webp"
+                                alt="Couple perfume workshop experience" width="1536" height="1024"
+                                loading="lazy" decoding="async">
                             <div class="pricing-content">
                                 <p class="card-label">For two guests</p>
                                 <h3>Couple Session</h3>
@@ -219,11 +212,9 @@
                         </article>
 
                         <article class="pricing-card">
-                            <picture>
-                                <img class="pricing-image" src="perfume-images/pricing-addons.webp"
-                                    alt="Luxury bottle and extras" width="1184" height="864" loading="lazy"
-                                    decoding="async">
-                            </picture>
+                            <img class="pricing-image" src="perfume-images/pricing-addons.webp"
+                                alt="Luxury bottle and extras" width="1184" height="864" loading="lazy"
+                                decoding="async">
                             <div class="pricing-content">
                                 <p class="card-label">Optional extras</p>
                                 <h3>Finishing Touches</h3>
@@ -239,13 +230,11 @@
                 </div>
             </section>
 
-            <section class="section reservation-section" id="reservation">
+            <section class="section reservation-section" id="reservation" data-i18n-section="reservation">
                 <div class="container reservation-layout">
                     <div class="reservation-media">
-                        <picture>
-                            <img src="perfume-images/reserve-workshop.webp" alt="Elegant perfume workshop in Asakusa"
-                                width="1536" height="1024" loading="lazy" decoding="async">
-                        </picture>
+                        <img src="perfume-images/reserve-workshop.webp" alt="Elegant perfume workshop in Asakusa"
+                            width="1536" height="1024" loading="lazy" decoding="async">
                     </div>
 
                     <div class="reservation-content">
@@ -284,7 +273,7 @@
                 </div>
             </section>
 
-            <section class="section faq-section" id="faq">
+            <section class="section faq-section" id="faq" data-i18n-section="faq">
                 <div class="container faq-shell">
                     <div class="section-heading">
                         <p class="section-kicker">FAQ</p>
@@ -345,7 +334,7 @@
                 </div>
             </section>
 
-            <section class="section access-section" id="access">
+            <section class="section access-section" id="access" data-i18n-section="access">
                 <div class="container access-layout">
                     <div class="access-copy">
                         <p class="section-kicker">Access</p>
@@ -381,10 +370,8 @@
                     </div>
 
                     <div class="access-map-area">
-                        <picture>
-                            <img class="access-map" src="perfume-images/access-map.webp" alt="Map showing the atelier location"
-                                width="778" height="624" loading="lazy" decoding="async">
-                        </picture>
+                        <img class="access-map" src="perfume-images/access-map.webp" alt="Map showing the atelier location"
+                            width="778" height="624" loading="lazy" decoding="async">
                     </div>
                 </div>
             </section>
