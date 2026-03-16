@@ -1,0 +1,15 @@
+{
+  "name": "atelier-asakusa-backend",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Simple Express backend for the Atelier Asakusa landing page portfolio project.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.21.2"
+  }
+}

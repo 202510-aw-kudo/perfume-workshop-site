@@ -706,6 +706,7 @@ html[lang="ja"] .language-option {
     padding: 24px 0;
 }
 
+
 .reserve-steps {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));

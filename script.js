@@ -163,6 +163,13 @@ function createLanguageSwitcher() {
                     node.dataset[`ariaLabel${locale === "ja" ? "Jp" : "En"}`]
                 );
             }
+
+            if (node.dataset[`lang${locale === "ja" ? "Jp" : "En"}Placeholder`]) {
+                node.setAttribute(
+                    "placeholder",
+                    node.dataset[`lang${locale === "ja" ? "Jp" : "En"}Placeholder`]
+                );
+            }
         });
     }
 
@@ -183,7 +190,82 @@ function createLanguageSwitcher() {
     applyLocale(normalizeLocale(window.localStorage.getItem(storageKey) || defaultLocale));
 }
 
+function createDemoBackend() {
+    function getMissingFields(data, requiredFields) {
+        return requiredFields.filter((field) => {
+            const value = data[field];
+
+            if (typeof value === "string") {
+                return value.trim() === "";
+            }
+
+            return value === undefined || value === null;
+        });
+    }
+
+    function createReservation(data) {
+        const requiredFields = ["name", "email", "date", "guests", "plan"];
+        const missingFields = getMissingFields(data, requiredFields);
+
+        if (missingFields.length > 0) {
+            return {
+                success: false,
+                message: `Missing required fields: ${missingFields.join(", ")}`,
+            };
+        }
+
+        return {
+            success: true,
+            message: "Reservation received",
+            data: {
+                name: data.name,
+                email: data.email,
+                date: data.date,
+                guests: data.guests,
+                plan: data.plan,
+                message: data.message || "",
+                receivedAt: new Date().toISOString(),
+            },
+        };
+    }
+
+    function sendContactMessage(data) {
+        const requiredFields = ["name", "email", "message"];
+        const missingFields = getMissingFields(data, requiredFields);
+
+        if (missingFields.length > 0) {
+            return {
+                success: false,
+                message: `Missing required fields: ${missingFields.join(", ")}`,
+            };
+        }
+
+        return {
+            success: true,
+            message: "Contact message received",
+            data: {
+                name: data.name,
+                email: data.email,
+                message: data.message,
+                receivedAt: new Date().toISOString(),
+            },
+        };
+    }
+
+    return {
+        createReservation,
+        sendContactMessage,
+    };
+}
+
+function attachDemoFormHandlers() {
+    const demoBackend = createDemoBackend();
+
+    window.AtelierAsakusaDemoApi = demoBackend;
+}
+
 document.addEventListener("DOMContentLoaded", () => {
     document.querySelectorAll("[data-accordion]").forEach(createAccordion);
     createLanguageSwitcher();
+    attachDemoFormHandlers();
 });
