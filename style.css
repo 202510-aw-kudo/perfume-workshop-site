@@ -269,6 +269,17 @@ h3 {
     text-transform: uppercase;
 }
 
+.card-label {
+    display: inline-flex;
+    align-items: center;
+    padding: 7px 12px;
+    border: 1px solid rgba(141, 111, 103, 0.14);
+    border-radius: 999px;
+    background: rgba(255, 251, 248, 0.88);
+    color: #7d665f;
+    letter-spacing: 0.16em;
+}
+
 .hero-title {
     margin: 0;
     color: #fffaf7;
@@ -318,6 +329,7 @@ h3 {
     margin-top: 32px;
 }
 
+/* CTA hierarchy */
 .hero-cta,
 .pricing-button,
 .reserve-button {
@@ -344,6 +356,21 @@ h3 {
     box-shadow: var(--shadow-strong);
 }
 
+.hero-cta:focus-visible,
+.pricing-button:focus-visible,
+.reserve-button:focus-visible,
+.hero-link:focus-visible,
+.nav-cta:focus-visible {
+    outline: 2px solid rgba(95, 72, 66, 0.22);
+    outline-offset: 4px;
+}
+
+.hero-cta,
+.reserve-button,
+.pricing-card.featured .pricing-button {
+    box-shadow: 0 20px 44px rgba(63, 45, 40, 0.26);
+}
+
 .hero-link {
     display: inline-flex;
     align-items: center;
@@ -366,6 +393,23 @@ h3 {
     transform: translateY(-2px);
     background: rgba(255, 255, 255, 0.12);
     border-color: rgba(255, 250, 247, 0.28);
+}
+
+.pricing-button.secondary,
+.nav-cta {
+    color: var(--text);
+    background: rgba(255, 252, 249, 0.88);
+    border: 1px solid rgba(65, 52, 46, 0.12);
+    box-shadow: 0 10px 24px rgba(49, 35, 30, 0.06);
+}
+
+.pricing-button.secondary:hover,
+.pricing-button.secondary:focus-visible,
+.nav-cta:hover,
+.nav-cta:focus-visible {
+    background: rgba(255, 255, 255, 0.96);
+    border-color: rgba(65, 52, 46, 0.18);
+    box-shadow: 0 14px 30px rgba(49, 35, 30, 0.08);
 }
 
 .hero-note {
@@ -435,6 +479,15 @@ h3 {
     border-radius: var(--radius-lg);
 }
 
+.experience-card picture,
+.pricing-card picture,
+.reservation-media picture,
+.access-map-area picture,
+.flow-media picture {
+    display: block;
+}
+
+/* Media rendering and image fallback structure */
 .experience-card img,
 .pricing-image {
     width: 100%;
@@ -501,25 +554,44 @@ h3 {
     position: relative;
     display: flex;
     flex-direction: column;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
 }
 
+/* Featured pricing emphasis */
 .pricing-card.featured {
-    transform: translateY(-12px);
+    transform: translateY(-10px);
     background: linear-gradient(180deg, rgba(255, 250, 246, 0.98) 0%, rgba(244, 233, 226, 0.98) 100%);
+    border-color: rgba(141, 111, 103, 0.28);
+    box-shadow:
+        0 26px 64px rgba(63, 45, 40, 0.14),
+        0 0 0 1px rgba(217, 193, 183, 0.38);
+}
+
+.pricing-card.featured:hover {
+    transform: translateY(-14px);
+    box-shadow:
+        0 34px 72px rgba(63, 45, 40, 0.18),
+        0 0 0 1px rgba(217, 193, 183, 0.46);
+}
+
+.pricing-card.featured .pricing-content {
+    padding-top: 34px;
 }
 
 .pricing-badge {
     position: absolute;
-    top: 22px;
+    top: 18px;
     left: 22px;
     z-index: 1;
-    padding: 10px 14px;
+    padding: 10px 16px;
     border-radius: 999px;
-    background: rgba(41, 33, 30, 0.82);
+    background: linear-gradient(135deg, #71554e 0%, #4f3a35 100%);
     color: #fffaf7;
-    font-size: 0.78rem;
-    letter-spacing: 0.12em;
+    font-size: 0.74rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
     text-transform: uppercase;
+    box-shadow: 0 14px 28px rgba(49, 35, 30, 0.2);
 }
 
 .pricing-content {
@@ -541,13 +613,6 @@ h3 {
     font-family: "Cormorant Garamond", Georgia, serif;
     font-size: 2.7rem;
     font-weight: 600;
-}
-
-.pricing-button.secondary {
-    color: var(--text);
-    background: transparent;
-    border: 1px solid var(--line-strong);
-    box-shadow: none;
 }
 
 .reservation-layout {
@@ -960,6 +1025,10 @@ h3 {
     }
 
     .pricing-card.featured {
+        transform: none;
+    }
+
+    .pricing-card.featured:hover {
         transform: none;
     }
 
