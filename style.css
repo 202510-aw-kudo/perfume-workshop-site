@@ -37,6 +37,14 @@ body {
         linear-gradient(180deg, #fbf8f5 0%, var(--bg) 100%);
 }
 
+html[lang="ja"] body,
+html[lang="ja"] button,
+html[lang="ja"] input,
+html[lang="ja"] textarea,
+html[lang="ja"] select {
+    font-family: "Noto Sans JP", "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif;
+}
+
 img {
     max-width: 100%;
     height: auto;
@@ -105,6 +113,31 @@ select {
 h2,
 h3 {
     font-family: "Cormorant Garamond", Georgia, serif;
+}
+
+html[lang="ja"] .brand-copy strong,
+html[lang="ja"] .hero-title,
+html[lang="ja"] h2,
+html[lang="ja"] h3,
+html[lang="ja"] .pricing-price {
+    font-family: "Noto Sans JP", "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif;
+    font-weight: 600;
+    letter-spacing: 0;
+}
+
+html[lang="ja"] .hero-title {
+    line-height: 1.04;
+}
+
+html[lang="ja"] .brand-copy small,
+html[lang="ja"] .hero-kicker,
+html[lang="ja"] .section-kicker,
+html[lang="ja"] .card-label,
+html[lang="ja"] .flow-step,
+html[lang="ja"] .pricing-badge,
+html[lang="ja"] .language-option {
+    font-family: "Noto Sans JP", "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif;
+    letter-spacing: 0.08em;
 }
 
 .brand-copy strong {

@@ -98,6 +98,92 @@ function createAccordion(root) {
     });
 }
 
+function createLanguageSwitcher() {
+    const storageKey = "atelier-asakusa-locale";
+    const root = document.documentElement;
+    const buttons = Array.from(document.querySelectorAll("[data-lang-switch]"));
+    const translatableNodes = Array.from(document.querySelectorAll("[data-lang-en][data-lang-jp]"));
+
+    if (!buttons.length || !translatableNodes.length) {
+        return;
+    }
+
+    const supportedLocales = (root.dataset.supportedLocales || "en").split(",");
+    const defaultLocale = root.dataset.defaultLocale || "en";
+
+    function normalizeLocale(locale) {
+        return supportedLocales.includes(locale) ? locale : defaultLocale;
+    }
+
+    function updateButtonState(activeLocale) {
+        buttons.forEach((button) => {
+            const isActive = button.dataset.langSwitch === activeLocale;
+            button.classList.toggle("is-active", isActive);
+            button.setAttribute("aria-pressed", String(isActive));
+        });
+    }
+
+    function setNodeText(node, nextText) {
+        if (node.dataset.langTarget === "text") {
+            node.textContent = nextText;
+            return;
+        }
+
+        const hasElementChildren = Array.from(node.childNodes).some(
+            (child) => child.nodeType === Node.ELEMENT_NODE
+        );
+
+        if (!hasElementChildren) {
+            node.textContent = nextText;
+            return;
+        }
+
+        const textNode = Array.from(node.childNodes).find(
+            (child) => child.nodeType === Node.TEXT_NODE && child.textContent.trim().length > 0
+        );
+
+        if (textNode) {
+            textNode.textContent = nextText;
+        }
+    }
+
+    function updateText(locale) {
+        translatableNodes.forEach((node) => {
+            const nextText = node.dataset[`lang${locale === "ja" ? "Jp" : "En"}`];
+
+            if (typeof nextText !== "string") {
+                return;
+            }
+
+            setNodeText(node, nextText);
+
+            if (node.dataset[`ariaLabel${locale === "ja" ? "Jp" : "En"}`]) {
+                node.setAttribute(
+                    "aria-label",
+                    node.dataset[`ariaLabel${locale === "ja" ? "Jp" : "En"}`]
+                );
+            }
+        });
+    }
+
+    function applyLocale(locale) {
+        const nextLocale = normalizeLocale(locale);
+        root.lang = nextLocale;
+        updateText(nextLocale);
+        updateButtonState(nextLocale);
+        window.localStorage.setItem(storageKey, nextLocale);
+    }
+
+    buttons.forEach((button) => {
+        button.addEventListener("click", () => {
+            applyLocale(button.dataset.langSwitch || defaultLocale);
+        });
+    });
+
+    applyLocale(normalizeLocale(window.localStorage.getItem(storageKey) || defaultLocale));
+}
+
 document.addEventListener("DOMContentLoaded", () => {
     document.querySelectorAll("[data-accordion]").forEach(createAccordion);
+    createLanguageSwitcher();
 });
